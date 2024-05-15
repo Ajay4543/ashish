@@ -59,7 +59,7 @@
 	        value = parseInt(quantityAmount.value, 10);
 
 	        value = isNaN(value) ? 0 : value;
-	        if (value > 0) value--;
+	        if (value > 1) value--;
 
 	        quantityAmount.value = value;
 	    }
@@ -71,3 +71,17 @@
 
 
 })()
+
+document.body.addEventListener('click', () => {
+	document.querySelector('#accountDropdown').classList.add('d-none');
+})
+
+document.querySelector('#accountIcon').addEventListener('click', (e) => {
+	e.preventDefault();
+	e.stopPropagation();
+	document.querySelector('#accountDropdown').classList.toggle('d-none');
+})
+
+document.querySelector('#accountDropdown').addEventListener('click', (e) => {
+	e.stopPropagation();
+})

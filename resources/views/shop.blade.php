@@ -26,9 +26,9 @@
                     <!-- Start Column 1 -->
                     <div class="col-12 col-md-4 col-lg-3 mb-5">
                         <a class="product-item" href="/product/{{ $product['id'] }}">
-						<img src="{{ $product['url'] }}" class="img-fluid product-thumbnail">
-						<h3 class="product-title">{{ $product['name'] }}</h3>
-                            <strong class="product-price">{{ $product['price'] }}</strong>
+						<img src="{{ $product['image_url'] }}" class="img-fluid product-thumbnail">
+						<h3 class="product-title">{{ $product['product_name'] }}</h3>
+                            <strong class="product-price"><span>$</span>{{ $product['amount'] }}<span class="text-decoration-line-through fw-normal ms-2"><span>$</span>{{ $product['price'] }}</span></strong>
 
                             <span class="icon-cross">
                                 <img src="images/cross.svg" class="img-fluid">
@@ -37,6 +37,10 @@
                     </div>
                     <!-- End Column 1 -->
                 @endforeach
+
+                <div>
+                    {{ $products->links() }}
+                </div>
 
 
             </div>
