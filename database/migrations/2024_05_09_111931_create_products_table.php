@@ -18,8 +18,6 @@ return new class extends Migration
             $table->text('image_url');
             $table->text('description');
             $table->integer('quantity');
-            $table->integer('category_id');
-            $table->string('sku');
             $table->timestamps();
         });
     }

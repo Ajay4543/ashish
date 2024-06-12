@@ -47,9 +47,21 @@
 
                     <li class="position-relative">
                         <span id="accountIcon" class="nav-link"><img src="{{ asset('images/user.svg') }}"></span>
-                        <div id="accountDropdown" class="d-none position-absolute d-flex flex-column gap-2 px-4 py-3 bg-white rounded fs-6" style="z-index: 100; width: 120px">
-                            <a href="/signin">Sign In</a>
-                            <a href="/signup">Sign Up</a>
+                        <div id="accountDropdown"
+                            class="d-none position-absolute d-flex flex-column gap-2 px-4 py-3 bg-white rounded fs-6"
+                            style="z-index: 100; width: 120px">
+                            @if (auth()->check())
+                                <a href="#">Profile</a>
+                                <form id="logout-form" action="/logout" method="POST"
+                                    style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="rounded">Logout</button>
+                                </form>
+                            @else
+                                <a href="/signin">Sign In</a>
+                                <a href="/signup">Sign Up</a>
+                            @endif
                         </div>
                     </li>
 

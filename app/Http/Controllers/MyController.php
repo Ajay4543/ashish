@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use App\Models\ProductsDetail;
+use App\Models\Product;
+use Illuminate\Contracts\View\View;
 
 class MyController extends Controller
 {
@@ -14,7 +14,7 @@ class MyController extends Controller
 
     public function about(): View
     {
-        return view('about-us');
+        return view('aboutUs');
     }
 
     public function services(): View
@@ -29,7 +29,7 @@ class MyController extends Controller
 
     public function contact(): View
     {
-        return view('contact-us');
+        return view('contactUs');
     }
 
     public function cart(): View
@@ -47,32 +47,18 @@ class MyController extends Controller
         return view('thankyou');
     }
 
+
+    
     public function shop(): View
     {
-        return view('shop', ['products' => ProductsDetail::paginate(8)]);
+        return view('shop', ['products' => Product::paginate(8)]);
     }
 
     public function product($id): View
     {
-        $product = ProductsDetail::find($id);
+        $product = Product::find($id);
         if($product)
         return view('product', ['product' => $product]);
         abort(404);
     }
-
-    public function signup(): View
-    {
-        return view('signup');
-    }
-
-    public function signin(): View
-    {
-        return view('signin');
-    }
-
-    public function forget(): View
-    {
-        return view('forget');
-    }
-
 }
